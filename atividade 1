@@ -1,0 +1,40 @@
+ # ligar e desligar o led com o botão
+O objetivo do circuito é controlar o apagar e acender de um led por meio de um botão.
+
+Componentes necessários:
+1. um diodo (led)
+2. um botão
+3. um arduino uno
+4. um resistor de 220 ohm
+5. um resistor de 10k ohm
+6. cabos jumper macho/macho
+
+código do programa:
+
+//Definição dos pins
+const int buttonPin = 2;
+const int LedPin = 9;
+///variable will chance:
+int buttonState = 0;
+
+
+void setup () {
+   // initilize the LED pin as an output:
+ pinMode (LedPin, OUTPUT);
+//inizialize the pushbutton pin as an intup:
+ pinMode(buttonPin, INPUT);
+}
+
+
+void loop  () {
+  //read the state of the pushbutton value:
+ buttonState = digitalRead(buttonPin);
+  //check if the pushbutton is pressed. if it is
+  if (buttonState = HIGH){
+ //turn led on:
+ digitalWrite(LedPin, HIGH);
+  } else {
+ //turn led off:
+ digitalWrite(LedPin, LOW);
+  }
+  }
