@@ -1,0 +1,49 @@
+ # ligar e desligar o botão com o led
+O objetivo do circuito é além de controlar o apagar e acender de um led por meio de um botão, contar na entrada serial do arduino quando o botão é precionado.
+
+Componentes necessários:
+1. um diodo (led)
+2. um botão
+3. um arduino uno
+4. um resistor de 220 ohm
+5. um resistor de 10k ohm
+6. cabos jumper macho/macho
+
+código do programa:
+
+const int buttonPin = 2;
+const int ledPin = LED_BUILTIN;
+//counter for the number of the presses
+int buttonPushCounter = 0;
+int buttonState = 0;
+//previous stateof the button 
+int lastButtonState = 0;
+
+void setup () {
+  pinMode (buttonPin, INPUT);
+  pinMode (ledPin, OUTPUT);
+  Serial.begin (9600);
+}
+
+void loop () {
+  // read the pushbutton input pin:
+  buttonState = digitalRead(buttonPin);
+
+  // compare the buttonState to its previous state
+  if (buttonState != lastButtonState) {
+ // if the state has changed, increment the
+  if ( buttonState == HIGH) {
+    buttonPushCounter++;
+    Serial.println("on");
+    Serial.println("numberof button pushes ");
+    Serial.println(buttonPushCounter);
+  } else { 
+    Serial.println("off");
+  }
+  delay(50);
+
+  // save state
+  lastButtonState = buttonState;
+  }
+
+  }
