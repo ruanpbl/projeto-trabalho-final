@@ -52,3 +52,5 @@ delay (10000); // Aguarda 10 segundo
 }
 
 ``````````````````````````
+# esquema
+![image](https://github.com/user-attachments/assets/1abf08e6-2874-4ef6-9183-8d170ab4b96d)
