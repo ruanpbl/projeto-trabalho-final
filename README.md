@@ -18,3 +18,37 @@ Envio de Notificação: Se o sistema estiver equipado com um módulo Wi-Fi, o Ar
 Sensor PIR: O pino de saída do sensor PIR é conectado a um dos pinos digitais do Arduino.
 Buzina: Um dos pinos digitais do Arduino é conectado ao terminal positivo da buzina, enquanto o terminal negativo é conectado ao GND.
 LEDs: Os LEDs são conectados a outros pinos digitais do Arduino, com resistores em série para limitar a corrente.
+# Código
+
+``````````````````````````
+// Código exemplo Sensor PIR de Moviemnto
+// Projeto de Alarme / Automação Residencial
+ 
+#define pinoPIR 8 // Define o pino 8 como "pinoPIR"
+#define pino5V 9 // Define o pino 9 como "pino5V"
+#define pinoRele 10 // Define o pino 10 como "pinoRele"
+ 
+void setup() {
+ 
+Serial.begin(9600); // Declara o BaundRate em 9600
+Serial.println("www.usinainfo.com.br"); // Imprime a frase no monitor serial
+pinMode(pinoPIR, INPUT); // Declara o pinoPIR como Entrada
+pinMode(pino5V, OUTPUT); // Declara o pino5V como Saída
+pinMode(pinoRele, OUTPUT); // Declara o pinoRele como Saída
+digitalWrite(pino5V, HIGH); // Põem o pino5V em estado alto = 5V
+}
+ 
+void loop() {
+ 
+if (digitalRead(pinoPIR) == LOW) { // Se o Sensor PIR Estiver em nível baixo
+digitalWrite (pinoRele, LOW); // Módulo Relé permanece desligado
+}
+ 
+if (digitalRead(pinoPIR) == HIGH) { // Se o Sensor PIR estiver em nível Alto
+digitalWrite (pinoRele, HIGH); // Liga o Relé
+Serial.println("Alarme Acionado"); // Imprime a mensagem no monitor serial
+delay (10000); // Aguarda 10 segundo
+}
+}
+
+``````````````````````````
